@@ -8,7 +8,9 @@ const COMPLITED = document.getElementById("complited");
 
 function addNewTask() {
     let inputValue = NEW_TASK_INPUT.value;
-    // ADD_TASK_BTN.onclick = () => {}
-    ALL_TASKS.innerHTML = inputValue;
+    ADD_TASK_BTN.onclick = () => {
+        ALL_TASKS.innerHTML = `<h1>${inputValue}</h1>`;
+        
+    }
 }
 addNewTask();
