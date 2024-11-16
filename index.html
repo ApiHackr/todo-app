@@ -11,7 +11,7 @@
     <form action="/">
         <label for="new-task">New task:</label><br>
         <input type="text" name="" id="new-task">
-        <button type="button" id="add-task-btn">&plus;</button>
+        <button type="button" class="add-task-btn">&plus;</button>
     </form>
     <br>
     <h1>All tasks</h1>
@@ -20,8 +20,8 @@
     <ul id="all-tasks">
         <li class="all">
             New ToDo
-            <button id="done">&check;</button>
-            <button id="delete">&cross;</button>
+            <button class="done">&check;</button>
+            <button class="delete">&cross;</button>
         </li>
     </ul>
     <br>
@@ -32,8 +32,8 @@
     <ul id="not-done">
         <li class="incomplite">
             ToDo
-            <button id="done">&check;</button>
-            <button id="delete">&cross;</button>
+            <button class="done">&check;</button>
+            <button class="delete">&cross;</button>
         </li>
     </ul>
     <br>
@@ -43,7 +43,7 @@
     <ul id="complited">
         <li class="complited">
             Done
-            <button id="delete">&cross;</button>
+            <button class="delete">&cross;</button>
         </li>
     </ul>
     <script src="script.js"></script>

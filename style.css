@@ -14,4 +14,21 @@ body {
 input,
 button {
     padding: .25rem .5rem;
+    border: none;
+}
+input {
+    border-bottom: 1px solid rgba(138, 43, 226, .2);
+}
+.add-task-btn {
+    background: rgb(69, 69, 255);
+}
+.done {
+    background: rgb(76, 181, 76);
+}
+.delete {
+    background: rgb(255, 120, 120);
+}
+
+li {
+    list-style: none;
 }
