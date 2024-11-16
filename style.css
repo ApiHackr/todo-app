@@ -20,7 +20,7 @@ input {
     border-bottom: 1px solid rgba(138, 43, 226, .2);
 }
 .add-task-btn {
-    background: rgb(69, 69, 255);
+    background: rgb(0, 131, 253);
 }
 .done {
     background: rgb(76, 181, 76);
