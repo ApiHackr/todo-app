@@ -17,7 +17,7 @@ button {
     border: none;
 }
 input {
-    border-bottom: 1px solid rgba(138, 43, 226, .2);
+    border-bottom: 1px solid rgba(0, 131, 253, .3);
 }
 .add-task-btn {
     background: rgb(0, 131, 253);
