@@ -22,7 +22,6 @@ function addNewTask() {
         listItem.appendChild(checkBtn);
         listItem.appendChild(deleteBtn);
         // ALL_TASKS.innerHTML = `<li>${inputValue}</li>`;
-        
     }
 }
 addNewTask();
