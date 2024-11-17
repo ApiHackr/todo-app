@@ -12,6 +12,8 @@ body {
     flex-direction: column;
 }
 form,
+h2,
+ul,
 li {
     padding: 1rem;
 }
