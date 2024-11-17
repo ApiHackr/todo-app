@@ -11,10 +11,15 @@ body {
     display: flex;
     flex-direction: column;
 }
+form,
+li {
+    padding: 1rem;
+}
 input,
 button {
     padding: .25rem .5rem;
     border: none;
+    outline: none;
 }
 input {
     border-bottom: 1px solid rgba(0, 131, 253, .3);
@@ -23,6 +28,7 @@ input {
     background: rgb(0, 131, 253);
 }
 .done {
+    margin-inline: .5rem .25rem;
     background: rgb(76, 181, 76);
 }
 .delete {
