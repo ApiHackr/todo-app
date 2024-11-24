@@ -5,6 +5,7 @@ const ADD_TASK_BTN = document.querySelector(".add-task-btn");
 const ALL_TASKS = document.getElementById("all-tasks");
 const NOT_DONE = document.getElementById("not-done");
 const COMPLITED = document.getElementById("complited");
+const DELETE = document.querySelector(".delete");
 
 
 ADD_TASK_BTN.addEventListener("click", addNewTask);
@@ -27,6 +28,11 @@ function addNewTask() {
         // ALL_TASKS.innerHTML = `<li>${inputValue}</li>`;
 }
 
+DELETE.addEventListener("click", removeElement);
+
+function removeElement() {
+    
+}
         // <li class="all">
         //     New ToDo
         //     <button class="done">&check;</button>
