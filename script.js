@@ -9,6 +9,8 @@ const DELETE = document.querySelector(".delete");
 
 
 ADD_TASK_BTN.addEventListener("click", addNewTask);
+ALL_TASKS.addEventListener("click", removeElement);
+COMPLITED.addEventListener("click", removeElement);
 
 function addNewTask() {
     const inputValue = NEW_TASK_INPUT.value;
@@ -28,10 +30,14 @@ function addNewTask() {
         // ALL_TASKS.innerHTML = `<li>${inputValue}</li>`;
 }
 
-DELETE.addEventListener("click", removeElement);
 
-function removeElement() {
-    
+function removeElement(e) {
+    const item = e.target;
+
+    if(item.classList[0] === "delete") {
+        const toRemove = item.parentElement;
+        toRemove.remove();
+    }
 }
         // <li class="all">
         //     New ToDo
