@@ -44,3 +44,9 @@ function removeElement(e) {
         //     <button class="done">&check;</button>
         //     <button class="delete">&cross;</button>
         // </li>
+
+
+        // <li class="complited">
+        //     Done
+        //     <button class="delete">&cross;</button>
+        // </li>
