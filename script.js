@@ -28,11 +28,6 @@ function addNewTask() {
     listItem.appendChild(checkBtn);
     listItem.appendChild(deleteBtn);
         // ALL_TASKS.innerHTML = `<li>${inputValue}</li>`;
-    if(listItem.classList[0] === "not-done") {
-        NOT_DONE.appendChild(listItem);
-    } else {
-        COMPLITED.appendChild(listItem);
-    }
 }
 
 
