@@ -1,19 +1,19 @@
 "use strict";
 
-const NEW_TASK_INPUT = document.getElementById("new-task");
-const ADD_TASK_BTN = document.querySelector(".add-task-btn");
-const ALL_TASKS = document.getElementById("all-tasks");
-const NOT_DONE = document.getElementById("not-done");
-const COMPLITED = document.getElementById("complited");
-const DELETE = document.querySelector(".delete");
+const newTaskInput = document.getElementById("new-task");
+const addTaskBtn = document.querySelector(".add-task-btn");
+const allTasks = document.getElementById("all-tasks");
+const notDone = document.getElementById("not-done");
+const complited = document.getElementById("complited");
+const delete = document.querySelector(".delete");
 
 
-ADD_TASK_BTN.addEventListener("click", addNewTask);
-ALL_TASKS.addEventListener("click", removeElement);
-COMPLITED.addEventListener("click", removeElement);
+addTaskBtn.addEventListener("click", addNewTask);
+allTasks.addEventListener("click", removeElement);
+complited.addEventListener("click", removeElement);
 
 function addNewTask() {
-    const inputValue = NEW_TASK_INPUT.value;
+    const inputValue = newTaskInput.value;
     const listItem = document.createElement("li");
     listItem.classList.add("all");
     listItem.innerText = inputValue;
@@ -24,10 +24,10 @@ function addNewTask() {
     deleteBtn.classList.add("delete");
     deleteBtn.innerHTML = "&cross;";
     
-    ALL_TASKS.appendChild(listItem);
+    allTasks.appendChild(listItem);
     listItem.appendChild(checkBtn);
     listItem.appendChild(deleteBtn);
-        // ALL_TASKS.innerHTML = `<li>${inputValue}</li>`;
+        // allTasks.innerHTML = `<li>${inputValue}</li>`;
 }
 
 
