@@ -1,6 +1,6 @@
 "use strict";
 
-const newTask = document.getElementById("new-task").value;
+const newTask = document.getElementById("new-task");
 const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
@@ -11,11 +11,11 @@ const tasks = [];
 addTaskBtn.addEventListener('click', addTask);
 
 function addTask() {
-  const inputValue = newTask.trim();
+  const inputValue = newTask.value.trim();
   if (inputValue) {
     tasks.push({description: inputValue, done: false});
-    // inputValue = '';
     console.log(tasks);
+    newTask.value = '';
   }
 };
 
