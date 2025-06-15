@@ -5,40 +5,40 @@ const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
 const complited = document.getElementById("complited");
-// const delete = document.querySelector(".delete");
 
 
-addTaskBtn.addEventListener("click", addNewTask);
-allTasks.addEventListener("click", removeElement);
-complited.addEventListener("click", removeElement);
 
-function addNewTask() {
-    const inputValue = newTaskInput.value;
-    const listItem = document.createElement("li");
-    listItem.classList.add("all");
-    listItem.innerText = inputValue;
-    const checkBtn = document.createElement("button");
-    checkBtn.classList.add("done");
-    checkBtn.innerHTML = "&check;"
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("delete");
-    deleteBtn.innerHTML = "&cross;";
+// addTaskBtn.addEventListener("click", addNewTask);
+// allTasks.addEventListener("click", removeElement);
+// complited.addEventListener("click", removeElement);
+
+// function addNewTask() {
+//     const inputValue = newTaskInput.value;
+//     const listItem = document.createElement("li");
+//     listItem.classList.add("all");
+//     listItem.innerText = inputValue;
+//     const checkBtn = document.createElement("button");
+//     checkBtn.classList.add("done");
+//     checkBtn.innerHTML = "&check;"
+//     const deleteBtn = document.createElement("button");
+//     deleteBtn.classList.add("delete");
+//     deleteBtn.innerHTML = "&cross;";
     
-    allTasks.appendChild(listItem);
-    listItem.appendChild(checkBtn);
-    listItem.appendChild(deleteBtn);
-        // allTasks.innerHTML = `<li>${inputValue}</li>`;
-}
+//     allTasks.appendChild(listItem);
+//     listItem.appendChild(checkBtn);
+//     listItem.appendChild(deleteBtn);
+//     allTasks.innerHTML = `<li>${inputValue}</li>`;
+// }
 
 
-function removeElement(e) {
-    const item = e.target;
+// function removeElement(e) {
+//     const item = e.target;
 
-    if(item.classList[0] === "delete") {
-        const toRemove = item.parentElement;
-        toRemove.remove();
-    }
-}
+//     if(item.classList[0] === "delete") {
+//         const toRemove = item.parentElement;
+//         toRemove.remove();
+//     }
+// }
         // <li class="all">
         //     New ToDo
         //     <button class="done">&check;</button>
