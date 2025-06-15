@@ -5,7 +5,7 @@ const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
 const complited = document.getElementById("complited");
-const delete = document.querySelector(".delete");
+// const delete = document.querySelector(".delete");
 
 
 addTaskBtn.addEventListener("click", addNewTask);
@@ -85,28 +85,122 @@ function removeElement(e) {
 
 
 
-<div id="aufgabenApp">
-            <h1>To-do-Liste</h1>
-            <p>
-                <label for="neueAufgabe">Weitere Aufgaben</label>
-                <input type="text" id="neueAufgabe" v-model="neueAufgabe" placeholder="Neue Aufgabe eingeben">
-                <button class="hinzu" @click="aufgabeHinzu">hinzufügen</button>
-            </p>
-            <h1>Alle Aufgaben</h1>
-            <ul>
-                <li v-for="(aufgabe, index) in aufgaben" :class="{ 'abgeschlossen' : aufgabe.fertig}">
-                    <p>{{aufgabe.beschreibung}}</p>
-                    <button class="erledigtWechseln" @click="erledigtWechseln(index)">&#10004;</button>
-                    <button class="loeschen" @click="loeschen(index)">&#10008;</button>
-                </li>
-            </ul>
-            <h2>Noch tun</h2>
-            <ul>
-                <li v-for="aufgabe in nichterledigt">{{ aufgabe.beschreibung}}</li>
-            </ul>
-            <h2>Abgeschlossen</h2>
-            <ul>
-                <li v-for="aufgabe in erledigt">{{ aufgabe.beschreibung}}</li>
-            </ul>
-</div>
+<template>
+  <div id="aufgaben-app">
+    <h1>To-do-Liste</h1>
+    <p>
+      <label for="neueAufgabe">Weitere Aufgaben</label>
+      <input id="neueAufgabe" type="text" v-model="neueAufgabe">
+      <button class="hinzu" @click="aufgabeHinzu">hinzufügen</button>
+    </p>
+    <h2>Alle Aufgaben</h2>
+    <ul>
+      <li v-for="(aufgabe, index) in aufgaben" :key="index"
+      :class="{'abgeschlossen' : aufgabe.fertig}">
+        <p>{{ aufgabe.beschreibung }}</p>
+        <button class="erledigtWechseln" @click="erledigtWechseln(index)">&#10003;</button>
+        <button class="loeschen" @click="loeschen(index)">&#10007;</button>
+      </li>
+    </ul>
+    <h3>Noch tun</h3>
+      <ul>
+        <li v-for="aufgabe in nichterledigt" :key="aufgabe.beschreibung">
+          {{ aufgabe.beschreibung }}
+        </li>
+      </ul>
+    <h3>Abgeschlossen</h3>
+    <ul>
+      <li v-for="aufgabe in erledigt" :key="aufgabe.beschreibung">
+        {{ aufgabe.beschreibung }}
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TodoList',
+  data() {
+    return {
+      aufgaben: [],
+      neueAufgabe: '',
+    };
+  },
+  computed: {
+    erledigt() {
+      return this.aufgaben.filter(aufgabe => aufgabe.fertig);
+    },
+    nichterledigt() {
+      return this.aufgaben.filter(aufgabe => !aufgabe.fertig);
+    },
+  },
+  methods: {
+    aufgabeHinzu() {
+      const text = this.neueAufgabe.trim();
+      if (text) {
+        this.aufgaben.push({ beschreibung: this.neueAufgabe, fertig: false });
+        this.neueAufgabe = '';
+      }
+    },
+    loeschen(index) {
+      this.aufgaben.splice(index, 1);
+    },
+    erledigtWechseln(index) {
+      this.aufgaben[index].fertig = !this.aufgaben[index].fertig;
+    },
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  body {
+    font: 100% sans-serif;
+  }
+  #aufgaben-app {
+    padding: 1rem;
+  }
+  h1,
+  h2,
+  h3 {
+    font-size: 100%;
+  }
+  label {
+    display: block;
+  }
+  ul {
+    max-width: 22rem;
+    list-style: none;
+    padding-left: 0;
+  }
+  li {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    border: #a9e8e3 1px solid;
+    display: flex;
+    align-items: center;
+  }
+  li p {
+    margin: 0;
+  }
+  li button {
+    border-radius: 4px;
+    color: #fff;
+  }
+  .erledigtWechseln {
+    margin-left: auto;
+    background-color: #ff4112;
+  }
+  .loeschen {
+    background-color: orange;
+  }
+  .abgeschlossen .erledigtWechseln {
+    background-color: #1c89ff;
+  }
+  .abgeschlossen p {
+    text-decoration: line-through;
+  }
+</style>
+
 */
