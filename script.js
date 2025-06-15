@@ -1,12 +1,16 @@
 "use strict";
 
-const newTaskInput = document.getElementById("new-task");
+const newTask = document.getElementById("new-task").value;
 const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
 const complited = document.getElementById("complited");
 
+const tasks = [];
 
+addTaskBtn.addEventListener('click', addTask);
+
+function addTask() {};
 
 // addTaskBtn.addEventListener("click", addNewTask);
 // allTasks.addEventListener("click", removeElement);
