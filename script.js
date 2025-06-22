@@ -17,13 +17,17 @@ function addTask() {
     tasks.push({description: inputValue, done: false});
     for (let task of tasks) {
       let li = document.createElement('li');
-      let changeDoneBtn = document.createElement('button');
       let para = document.createElement('p');
+      let changeDoneBtn = document.createElement('button');
+      let deleteBtn = document.createElement('button');
       para.textContent = task.description;
       changeDoneBtn.innerHTML = '&#10003;';
       changeDoneBtn.classList = 'change-done';
+      deleteBtn.innerHTML = '&#10007;';
+      deleteBtn.classList = 'delete';
       li.appendChild(para);
       li.appendChild(changeDoneBtn);
+      li.appendChild(deleteBtn);
       fragment.append(li);
     }
     allTasks.innerHTML = '';
