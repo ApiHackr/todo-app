@@ -19,7 +19,6 @@ function addTask() {
       let li = document.createElement('li');
       li.textContent = task.description;
       fragment.append(li);
-      // console.log(task);
     }
     allTasks.innerHTML = '';
     allTasks.append(fragment);
