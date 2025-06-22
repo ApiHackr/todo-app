@@ -15,7 +15,13 @@ function addTask() {
   const inputValue = newTask.value.trim();
   if (inputValue) {
     tasks.push({description: inputValue, done: false});
-    allTasks.textContent = tasks[0].description;
+    for (let task of tasks) {
+      let li = document.createElement('li');
+      li.textContent = task;
+      fragment.append(li);
+      // console.log(task);
+    }
+    allTasks.append(fragment);
   }
   newTask.value = '';
 };
