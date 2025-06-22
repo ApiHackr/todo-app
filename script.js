@@ -14,7 +14,7 @@ function addTask() {
   const inputValue = newTask.value.trim();
   if (inputValue) {
     tasks.push({description: inputValue, done: false});
-    console.log(tasks);
+    allTasks.innerHTML = tasks;
     newTask.value = '';
   }
 };
