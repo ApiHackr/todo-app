@@ -17,10 +17,11 @@ function addTask() {
     tasks.push({description: inputValue, done: false});
     for (let task of tasks) {
       let li = document.createElement('li');
-      li.textContent = task;
+      li.textContent = task.description;
       fragment.append(li);
       // console.log(task);
     }
+    allTasks.innerHTML = '';
     allTasks.append(fragment);
   }
   newTask.value = '';
