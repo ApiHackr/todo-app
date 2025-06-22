@@ -7,6 +7,7 @@ const notDone = document.getElementById("not-done");
 const complited = document.getElementById("complited");
 
 const tasks = [];
+let fragment = document.createDocumentFragment();
 
 addTaskBtn.addEventListener('click', addTask);
 
