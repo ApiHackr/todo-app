@@ -17,7 +17,10 @@ function addTask() {
     tasks.push({description: inputValue, done: false});
     for (let task of tasks) {
       let li = document.createElement('li');
+      let changeDoneBtn = document.createElement('button');
       li.textContent = task.description;
+      changeDoneBtn.innerHTML = '&#10003;';
+      li.appendChild(btn);
       fragment.append(li);
     }
     allTasks.innerHTML = '';

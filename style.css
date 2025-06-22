@@ -37,12 +37,16 @@ input {
 .add-task-btn {
     background: rgb(0, 131, 253);
 }
-.done {
-    margin-inline: .5rem .25rem;
-    background: rgb(76, 181, 76);
+.change-done {
+    margin-left: auto;
+    background: rgb(255, 65, 18);
 }
 .delete {
-    background: rgb(255, 120, 120);
+    background: rgb(255, 165, 0);
+}
+.done .change-done {
+    /* margin-inline: .5rem .25rem; */
+    background-color: rgb(28, 137, 255);
 }
 
 li {
