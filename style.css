@@ -51,7 +51,7 @@ input {
 }
 .change-done {
     margin-left: auto;
-    margin-right: .5rem;
+    margin-right: .25rem;
     background: rgb(255, 65, 18);
 }
 .delete {
