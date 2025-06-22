@@ -48,7 +48,9 @@ input {
     /* margin-inline: .5rem .25rem; */
     background-color: rgb(28, 137, 255);
 }
-
+.done p {
+    text-decoration: line-through;
+  }
 li {
     list-style: none;
 }
