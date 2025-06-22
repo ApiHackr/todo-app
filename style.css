@@ -12,10 +12,22 @@ body {
     flex-direction: column;
 }
 .input-div,
-h2,
-ul,
-li {
+h2 {
     padding: 1rem;
+}
+ul {
+    max-width: 22rem;
+}
+li {
+    margin: 4px 0;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    border: rgba(0, 131, 253, .3) 1px solid;
+    border-radius: 4px;
+}
+li p {
+    margin: 0;
 }
 input,
 button {
