@@ -4,56 +4,54 @@ const newTask = document.getElementById("new-task");
 const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
-const complited = document.getElementById("complited");
+const completed = document.getElementById("completed");
 
 const tasks = [];
-let fragment = document.createDocumentFragment();
 
 addTaskBtn.addEventListener('click', addTask);
+allTasks.addEventListener('click', deleteTask);
 
 function addTask() {
   const inputValue = newTask.value.trim();
   if (inputValue) {
-    tasks.push({description: inputValue, done: false});
-    for (let task of tasks) {
-      let li = document.createElement('li');
-      let para = document.createElement('p');
-      let changeDoneBtn = document.createElement('button');
-      let deleteBtn = document.createElement('button');
-      para.textContent = task.description;
-      changeDoneBtn.innerHTML = '&#10003;';
-      changeDoneBtn.classList = 'change-done';
-      deleteBtn.innerHTML = '&#10007;';
-      deleteBtn.classList = 'delete';
-      li.appendChild(para);
-      li.appendChild(changeDoneBtn);
-      li.appendChild(deleteBtn);
-      fragment.append(li);
-    }
-    allTasks.innerHTML = '';
-    allTasks.append(fragment);
+    tasks.push({ description: inputValue, done: false });
+    newTask.value = '';
+    renderTasks();
   }
-  newTask.value = '';
-};
+}
 
-allTasks.addEventListener('click', deleteTask);
+function renderTasks() {
+  const fragment = document.createDocumentFragment();
+  tasks.forEach(task => {
+    let li = document.createElement('li');
+    let para = document.createElement('p');
+    let changeDoneBtn = document.createElement('button');
+    let deleteBtn = document.createElement('button')
+    para.textContent = task.description;
+    changeDoneBtn.innerHTML = '&#10003;';
+    changeDoneBtn.classList.add('change-done');
+    deleteBtn.innerHTML = '&#10007;';
+    deleteBtn.classList.add('delete');
+    li.appendChild(para);
+    li.appendChild(changeDoneBtn);
+    li.appendChild(deleteBtn);
+    fragment.appendChild(li);
+  });
+  allTasks.innerHTML = '';
+  allTasks.appendChild(fragment);
+}
 
 function deleteTask(e) {
   if (e.target.classList.contains('delete')) {
     const li = e.target.closest('li');
-    let index = -1;
-    tasks.forEach((task, i) => {
-      // Vergleiche Beschreibung mit dem Text im li, um den Index zu finden
-      if (li.querySelector('p').textContent === task.description) {
-        index = i;
-      }
-    });
+    const index = [...allTasks.children].indexOf(li);
     if (index > -1) {
       tasks.splice(index, 1);
-      addTask();
+      renderTasks();
     }
   }
 }
+
 
 /*
 <template>
