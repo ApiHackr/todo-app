@@ -70,7 +70,7 @@ function deleteTask(e) {
       // Animation in allTasks
       li.classList.add('delete-animation');
 
-      // Suche passendes <li> in notDone mit gleichem Text
+      // Finding suitable <li> in notDone with the same text
       const notDoneLis = [...notDone.querySelectorAll('li')];
       const match = notDoneLis.find(el => el.textContent.trim() === taskText);
       if (match) {
