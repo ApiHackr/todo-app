@@ -67,3 +67,20 @@ input {
 li {
     list-style: none;
 }
+
+
+@keyframes delete-animation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0;
+  }
+}
+
+.delete-animation {
+  animation-name: delete-animation;
+  transform-origin: left bottom;
+}
