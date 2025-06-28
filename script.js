@@ -77,7 +77,7 @@ function deleteTask(e) {
         match.classList.add('delete-animation');
       }
 
-      // Warte auf Animationende
+      // Waiting for the animation
       li.addEventListener('animationend', () => {
         tasks.splice(index, 1);
         renderTasks();
