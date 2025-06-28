@@ -65,9 +65,15 @@ function deleteTask(e) {
   if (e.target.classList.contains('delete')) {
     const li = e.target.closest('li');
     const index = [...allTasks.children].indexOf(li);
+
     if (index > -1) {
-      tasks.splice(index, 1);
-      renderTasks();
+      li.classList.add('delete-animation');  // CSS-Klasse hinzufügen
+
+      // Warte auf Animation (z. B. 300ms), dann löschen
+      setTimeout(() => {
+        tasks.splice(index, 1);
+        renderTasks();
+      }, 1000); // 300 ms passend zu deiner CSS-Animation
     }
   }
 }
