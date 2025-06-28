@@ -71,8 +71,11 @@ li {
 
 .delete-animation {
   animation-name: delete-animation;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
   transform-origin: left bottom;
 }
+
 @keyframes delete-animation {
   from {
     opacity: 1;
