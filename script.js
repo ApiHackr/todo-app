@@ -73,7 +73,7 @@ function deleteTask(e) {
       setTimeout(() => {
         tasks.splice(index, 1);
         renderTasks();
-      }, 1000); // 300 ms passend zu deiner CSS-Animation
+      }, 450); // 300 ms passend zu deiner CSS-Animation
     }
   }
 }
