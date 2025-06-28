@@ -25,7 +25,7 @@ function renderTasks() {
   const notDoneFragment = document.createDocumentFragment();
 
   tasks.forEach(task => {
-    // --- Mit Buttons (für allTasks) ---
+    // --- With buttons (for allTasks) ---
     let liAll = document.createElement('li');
     let paraAll = document.createElement('p');
     let changeDoneBtn = document.createElement('button');
