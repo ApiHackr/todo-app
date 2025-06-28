@@ -36,6 +36,13 @@ function addTask() {
   newTask.value = '';
 };
 
+allTasks.addEventListener('click', (e) => {
+  if(e.target.classList == 'delete') {
+    e.target.parentElement.remove();
+    allTasks.innerHTML = '';
+  }
+
+})
 /*
 <template>
   <div id="aufgaben-app">
