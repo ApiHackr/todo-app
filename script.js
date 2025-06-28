@@ -65,8 +65,19 @@ function deleteTask(e) {
     const index = [...allTasks.children].indexOf(li);
 
     if (index > -1) {
+      const taskText = tasks[index].description;
+
+      // Animation in allTasks
       li.classList.add('delete-animation');
 
+      // Suche passendes <li> in notDone mit gleichem Text
+      const notDoneLis = [...notDone.querySelectorAll('li')];
+      const match = notDoneLis.find(el => el.textContent.trim() === taskText);
+      if (match) {
+        match.classList.add('delete-animation');
+      }
+
+      // Warte auf Animationende
       li.addEventListener('animationend', () => {
         tasks.splice(index, 1);
         renderTasks();
@@ -74,6 +85,7 @@ function deleteTask(e) {
     }
   }
 }
+
 
 
 /*
