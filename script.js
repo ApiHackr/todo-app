@@ -42,7 +42,6 @@ function renderTasks() {
     liAll.appendChild(deleteBtn);
     allTasksFragment.appendChild(liAll);
 
-    // --- Ohne Buttons (für notDone), nur wenn noch nicht erledigt ---
     if (!task.done) {
       let liNotDone = document.createElement('li');
       let paraNotDone = document.createElement('p');
