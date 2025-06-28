@@ -51,7 +51,6 @@ function renderTasks() {
     }
   });
 
-  // DOM aktualisieren
   allTasks.innerHTML = '';
   allTasks.appendChild(allTasksFragment);
 
