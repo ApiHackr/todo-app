@@ -67,10 +67,10 @@ function deleteTask(e) {
     if (index > -1) {
       li.classList.add('delete-animation');
 
-      setTimeout(() => {
+      li.addEventListener('animationend', () => {
         tasks.splice(index, 1);
         renderTasks();
-      }, 450); 
+      }, { once: true });
     }
   }
 }
