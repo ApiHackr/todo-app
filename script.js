@@ -36,11 +36,25 @@ function addTask() {
   newTask.value = '';
 };
 
-allTasks.addEventListener('click', (e) => {
-  if(e.target.classList == 'delete') {
-    e.target.parentElement.remove();
+allTasks.addEventListener('click', deleteTask);
+
+function deleteTask(e) {
+  if (e.target.classList.contains('delete')) {
+    const li = e.target.closest('li');
+    let index = -1;
+    tasks.forEach((task, i) => {
+      // Vergleiche Beschreibung mit dem Text im li, um den Index zu finden
+      if (li.querySelector('p').textContent === task.description) {
+        index = i;
+      }
+    });
+    if (index > -1) {
+      tasks.splice(index, 1);
+      addTask();
+    }
   }
-})
+}
+
 /*
 <template>
   <div id="aufgaben-app">
