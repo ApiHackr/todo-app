@@ -21,25 +21,45 @@ function addTask() {
 }
 
 function renderTasks() {
-  const fragment = document.createDocumentFragment();
+  const allTasksFragment = document.createDocumentFragment();
+  const notDoneFragment = document.createDocumentFragment();
+
   tasks.forEach(task => {
-    let li = document.createElement('li');
-    let para = document.createElement('p');
+    // --- Mit Buttons (für allTasks) ---
+    let liAll = document.createElement('li');
+    let paraAll = document.createElement('p');
     let changeDoneBtn = document.createElement('button');
-    let deleteBtn = document.createElement('button')
-    para.textContent = task.description;
+    let deleteBtn = document.createElement('button');
+
+    paraAll.textContent = task.description;
     changeDoneBtn.innerHTML = '&#10003;';
     changeDoneBtn.classList.add('change-done');
     deleteBtn.innerHTML = '&#10007;';
     deleteBtn.classList.add('delete');
-    li.appendChild(para);
-    li.appendChild(changeDoneBtn);
-    li.appendChild(deleteBtn);
-    fragment.appendChild(li);
+
+    liAll.appendChild(paraAll);
+    liAll.appendChild(changeDoneBtn);
+    liAll.appendChild(deleteBtn);
+    allTasksFragment.appendChild(liAll);
+
+    // --- Ohne Buttons (für notDone), nur wenn noch nicht erledigt ---
+    if (!task.done) {
+      let liNotDone = document.createElement('li');
+      let paraNotDone = document.createElement('p');
+      paraNotDone.textContent = task.description;
+      liNotDone.appendChild(paraNotDone);
+      notDoneFragment.appendChild(liNotDone);
+    }
   });
+
+  // DOM aktualisieren
   allTasks.innerHTML = '';
-  allTasks.appendChild(fragment);
+  allTasks.appendChild(allTasksFragment);
+
+  notDone.innerHTML = '';
+  notDone.appendChild(notDoneFragment);
 }
+
 
 function deleteTask(e) {
   if (e.target.classList.contains('delete')) {
