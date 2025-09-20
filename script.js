@@ -23,6 +23,7 @@ function addTask() {
 function renderTasks() {
   const allTasksFragment = document.createDocumentFragment();
   const notDoneFragment = document.createDocumentFragment();
+  const doneFragment = document.createDocumentFragment();
 
   tasks.forEach(task => {
     // --- With buttons (for allTasks) ---
