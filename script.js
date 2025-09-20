@@ -10,6 +10,7 @@ const tasks = [];
 
 addTaskBtn.addEventListener('click', addTask);
 allTasks.addEventListener('click', deleteTask);
+allTasks.addEventListener('click', doneTask);
 
 function addTask() {
   const inputValue = newTask.value.trim();
@@ -59,7 +60,11 @@ function renderTasks() {
   notDone.appendChild(notDoneFragment);
 }
 
-
+function doneTask(e) {
+  if(e.target.classList.contains('change-done')) {
+    console.log(tasks.description);
+  }
+}
 function deleteTask(e) {
   if (e.target.classList.contains('delete')) {
     const li = e.target.closest('li');
