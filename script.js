@@ -51,6 +51,7 @@ function renderTasks() {
       liNotDone.appendChild(paraNotDone);
       notDoneFragment.appendChild(liNotDone);
     }
+
     if (task.done) {
       let liDone = document.createElement('li');
       let paraDone = document.createElement('p');
@@ -65,11 +66,19 @@ function renderTasks() {
 
   notDone.innerHTML = '';
   notDone.appendChild(notDoneFragment);
+  
+  completed.innerHTML = '';
+  completed.appendChild(doneFragment);
 }
 
 function doneTask(e) {
-  if(e.target.classList.contains('change-done')) {
-    console.log(tasks.description);
+  if (e.target.classList.contains('change-done')) {
+    const li = e.target.closest('li');
+    const index = Array.from(li.parentElement.children).indexOf(li);
+    tasks[index].done = true;
+    console.log(tasks);
+    li.children[0].style.textDecoration = "line-through";
+
   }
 }
 function deleteTask(e) {
