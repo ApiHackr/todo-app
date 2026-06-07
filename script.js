@@ -58,6 +58,7 @@ function renderTasks() {
       paraDone.textContent = task.description;
       liDone.appendChild(paraDone);
       doneFragment.appendChild(liDone);
+      console.log('done');
     }
   });
 
@@ -67,8 +68,8 @@ function renderTasks() {
   notDone.innerHTML = '';
   notDone.appendChild(notDoneFragment);
   
-  completed.innerHTML = '';
-  completed.appendChild(doneFragment);
+  // completed.innerHTML = '';
+  // completed.appendChild(doneFragment);
 }
 
 function doneTask(e) {
