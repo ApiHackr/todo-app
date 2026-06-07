@@ -44,14 +44,6 @@ function renderTasks() {
     liAll.appendChild(deleteBtn);
     allTasksFragment.appendChild(liAll);
 
-    if (!task.done) {
-      let liNotDone = document.createElement('li');
-      let paraNotDone = document.createElement('p');
-      paraNotDone.textContent = task.description;
-      liNotDone.appendChild(paraNotDone);
-      notDoneFragment.appendChild(liNotDone);
-    }
-
     if (task.done) {
       let liDone = document.createElement('li');
       let paraDone = document.createElement('p');
@@ -60,6 +52,14 @@ function renderTasks() {
       doneFragment.appendChild(liDone);
       console.log('done');
     }
+    if (!task.done) {
+      let liNotDone = document.createElement('li');
+      let paraNotDone = document.createElement('p');
+      paraNotDone.textContent = task.description;
+      liNotDone.appendChild(paraNotDone);
+      notDoneFragment.appendChild(liNotDone);
+    }
+
   });
 
   allTasks.innerHTML = '';
