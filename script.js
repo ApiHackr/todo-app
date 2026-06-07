@@ -51,6 +51,13 @@ function renderTasks() {
       liNotDone.appendChild(paraNotDone);
       notDoneFragment.appendChild(liNotDone);
     }
+    if (task.done) {
+      let liDone = document.createElement('li');
+      let paraDone = document.createElement('p');
+      paraDone.textContent = task.description;
+      liDone.appendChild(paraDone);
+      doneFragment.appendChild(liDone);
+    }
   });
 
   allTasks.innerHTML = '';
