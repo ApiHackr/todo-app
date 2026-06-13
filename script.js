@@ -4,7 +4,7 @@ const newTask = document.getElementById("new-task");
 const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
-const completed = document.getElementById("complited");
+const completed = document.getElementById("completed");
 
 const tasks = [];
 
@@ -26,8 +26,8 @@ function renderTasks() {
   const notDoneFragment = document.createDocumentFragment();
   const doneFragment = document.createDocumentFragment();
 
-  tasks.forEach(task => {
-    // --- With buttons (for allTasks) ---
+  tasks.forEach((task, index) => {
+    // --- 1. Für ALLE Tasks ---
     let liAll = document.createElement('li');
     let paraAll = document.createElement('p');
     let changeDoneBtn = document.createElement('button');
@@ -39,61 +39,52 @@ function renderTasks() {
     deleteBtn.innerHTML = '&#10007;';
     deleteBtn.classList.add('delete');
 
+    // Visuelles Feedback, wenn erledigt
+    if (task.done) {
+      paraAll.style.textDecoration = "line-through";
+    }
+
     liAll.appendChild(paraAll);
     liAll.appendChild(changeDoneBtn);
     liAll.appendChild(deleteBtn);
     allTasksFragment.appendChild(liAll);
 
-    if (!task.done) {
-      let liNotDone = document.createElement('li');
-      let paraNotDone = document.createElement('p');
-      paraNotDone.textContent = task.description;
-      liNotDone.appendChild(paraNotDone);
-      notDoneFragment.appendChild(liNotDone);
-      console.log('es ist nicht done oben');
-    } else {
-      let liDone = document.createElement('li');
-      let paraDone = document.createElement('p');
-      paraDone.textContent = task.description;
-      liDone.appendChild(paraDone);
-      doneFragment.appendChild(liDone);
-      // console.log(doneFragment);
-      console.log('dies ist im ersten else');
-    }
+    // --- 2. Aufsplittung in Offen / Erledigt ---
+    let liStatus = document.createElement('li');
+    let paraStatus = document.createElement('p');
+    paraStatus.textContent = task.description;
+    liStatus.appendChild(paraStatus);
 
+    if (!task.done) {
+      notDoneFragment.appendChild(liStatus);
+    } else {
+      doneFragment.appendChild(liStatus);
+    }
   });
 
+  // --- HTML ERST HIER LEEREN UND BEFÜLLEN (Außerhalb der Schleife!) ---
   allTasks.innerHTML = '';
   allTasks.appendChild(allTasksFragment);
 
-  
-  tasks.forEach(task => {
-    if (!task.done) {
-      notDone.innerHTML = '';
-      notDone.appendChild(notDoneFragment);
-      console.log('es ist nicht done unten');
-    } else {
-      completed.innerHTML = '';
-      completed.appendChild(doneFragment);
-      console.log('dies ist im letzten else');
-      notDone.removeChild(notDone.firstChild)
-    }
-  })
+  notDone.innerHTML = '';
+  notDone.appendChild(notDoneFragment);
+
+  completed.innerHTML = '';
+  completed.appendChild(doneFragment);
 }
 
 function doneTask(e) {
   if (e.target.classList.contains('change-done')) {
     const li = e.target.closest('li');
     const index = Array.from(li.parentElement.children).indexOf(li);
-    tasks[index].done = true;
-    // console.log(tasks);
-    li.children[0].style.textDecoration = "line-through";
-    li.children[0].style.color = 'red';
-    console.log('bis hier geht was');
+    
+    // Zustand toggeln (so kann man es auch wieder rückgängig machen)
+    tasks[index].done = !tasks[index].done; 
+    
     renderTasks();
-
   }
 }
+
 function deleteTask(e) {
   if (e.target.classList.contains('delete')) {
     const li = e.target.closest('li');
@@ -102,17 +93,17 @@ function deleteTask(e) {
     if (index > -1) {
       const taskText = tasks[index].description;
 
-      // Animation in allTasks
+      // Animation in allTasks starten
       li.classList.add('delete-animation');
 
-      // Finding suitable <li> in notDone with the same text
-      const notDoneLis = [...notDone.querySelectorAll('li')];
+      // Passendes Element in der "notDone"- oder "completed"-Liste für die Animation finden
+      const notDoneLis = [...notDone.querySelectorAll('li'), ...completed.querySelectorAll('li')];
       const match = notDoneLis.find(el => el.textContent.trim() === taskText);
       if (match) {
         match.classList.add('delete-animation');
       }
 
-      // Waiting for the animation
+      // Warten bis die Animation vorbei ist, dann löschen und neu rendern
       li.addEventListener('animationend', () => {
         tasks.splice(index, 1);
         renderTasks();
