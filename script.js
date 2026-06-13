@@ -76,7 +76,7 @@ function renderTasks() {
       completed.innerHTML = '';
       completed.appendChild(doneFragment);
       console.log('dies ist im letzten else');
-      notDone.removeChild('li');
+      notDone.removeChild(notDone.firstChild)
     }
   })
 }
