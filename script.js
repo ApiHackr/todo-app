@@ -50,13 +50,15 @@ function renderTasks() {
       paraNotDone.textContent = task.description;
       liNotDone.appendChild(paraNotDone);
       notDoneFragment.appendChild(liNotDone);
+      console.log('es ist nicht done oben');
     } else {
       let liDone = document.createElement('li');
       let paraDone = document.createElement('p');
       paraDone.textContent = task.description;
       liDone.appendChild(paraDone);
       doneFragment.appendChild(liDone);
-      console.log(doneFragment);
+      // console.log(doneFragment);
+      console.log('dies ist im ersten else');
     }
 
   });
@@ -69,9 +71,12 @@ function renderTasks() {
     if (!task.done) {
       notDone.innerHTML = '';
       notDone.appendChild(notDoneFragment);
+      console.log('es ist nicht done unten');
     } else {
       completed.innerHTML = '';
       completed.appendChild(doneFragment);
+      console.log('dies ist im letzten else');
+      notDone.removeChild('li');
     }
   })
 }
@@ -83,6 +88,8 @@ function doneTask(e) {
     tasks[index].done = true;
     // console.log(tasks);
     li.children[0].style.textDecoration = "line-through";
+    li.children[0].style.color = 'red';
+    console.log('bis hier geht was');
     renderTasks();
 
   }
