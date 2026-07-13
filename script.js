@@ -4,7 +4,7 @@ const newTask = document.getElementById("new-task");
 const addTaskBtn = document.querySelector(".add-task-btn");
 const allTasks = document.getElementById("all-tasks");
 const notDone = document.getElementById("not-done");
-const completed = document.getElementById("completed");
+const completed = document.getElementById("complited");
 
 const tasks = [];
 
@@ -44,20 +44,19 @@ function renderTasks() {
     liAll.appendChild(deleteBtn);
     allTasksFragment.appendChild(liAll);
 
-    if (task.done) {
-      let liDone = document.createElement('li');
-      let paraDone = document.createElement('p');
-      paraDone.textContent = task.description;
-      liDone.appendChild(paraDone);
-      doneFragment.appendChild(liDone);
-      console.log('done');
-    }
     if (!task.done) {
       let liNotDone = document.createElement('li');
       let paraNotDone = document.createElement('p');
       paraNotDone.textContent = task.description;
       liNotDone.appendChild(paraNotDone);
       notDoneFragment.appendChild(liNotDone);
+    } else {
+      let liDone = document.createElement('li');
+      let paraDone = document.createElement('p');
+      paraDone.textContent = task.description;
+      liDone.appendChild(paraDone);
+      doneFragment.appendChild(liDone);
+      console.log(doneFragment);
     }
 
   });
@@ -65,11 +64,16 @@ function renderTasks() {
   allTasks.innerHTML = '';
   allTasks.appendChild(allTasksFragment);
 
-  notDone.innerHTML = '';
-  notDone.appendChild(notDoneFragment);
   
-  // completed.innerHTML = '';
-  // completed.appendChild(doneFragment);
+  tasks.forEach(task => {
+    if (!task.done) {
+      notDone.innerHTML = '';
+      notDone.appendChild(notDoneFragment);
+    } else {
+      completed.innerHTML = '';
+      completed.appendChild(doneFragment);
+    }
+  })
 }
 
 function doneTask(e) {
@@ -77,8 +81,9 @@ function doneTask(e) {
     const li = e.target.closest('li');
     const index = Array.from(li.parentElement.children).indexOf(li);
     tasks[index].done = true;
-    console.log(tasks);
+    // console.log(tasks);
     li.children[0].style.textDecoration = "line-through";
+    renderTasks();
 
   }
 }
